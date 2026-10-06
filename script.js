@@ -15,9 +15,11 @@ container.addEventListener("mouseout", (e) => {
 });
 
 function createDivs() {
+  const fragment = document.createDocumentFragment();
   for (let i = 0; i < 256; i++) {
     const div = document.createElement("div");
     div.classList.add("grid-cell");
-    container.append(div);
+    fragment.append(div);
   }
+  container.append(fragment);
 }
