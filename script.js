@@ -9,6 +9,7 @@ function createDivs() {
 }
 
 const container = document.getElementById("container");
+const btn = document.getElementById("edit-button");
 createDivs();
 
 container.addEventListener("mouseover", (e) => {
@@ -22,3 +23,21 @@ container.addEventListener("mouseout", (e) => {
   if (!div.classList.contains("grid-cell")) return;
   div.style.backgroundColor = "white";
 });
+
+btn.addEventListener("click", () => {
+  const LIMIT = 100;
+  let input;
+
+  do {
+    let response = prompt("Enter number of squares (MAXIMUM 100)");
+    input = Number(response);
+  } while (isNaN(input) || input > 100);
+  {
+    alert("Passed! Grid has been changed");
+  }
+
+  // TODO - reset canvas
+  // TODO - redraw grid
+});
+
+function getPrompt() {}
