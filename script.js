@@ -1,5 +1,14 @@
-const container = document.getElementById("container");
+function createDivs() {
+  const fragment = document.createDocumentFragment();
+  for (let i = 0; i < 256; i++) {
+    const div = document.createElement("div");
+    div.classList.add("grid-cell");
+    fragment.append(div);
+  }
+  container.append(fragment);
+}
 
+const container = document.getElementById("container");
 createDivs();
 
 container.addEventListener("mouseover", (e) => {
@@ -13,13 +22,3 @@ container.addEventListener("mouseout", (e) => {
   if (!div.classList.contains("grid-cell")) return;
   div.style.backgroundColor = "white";
 });
-
-function createDivs() {
-  const fragment = document.createDocumentFragment();
-  for (let i = 0; i < 256; i++) {
-    const div = document.createElement("div");
-    div.classList.add("grid-cell");
-    fragment.append(div);
-  }
-  container.append(fragment);
-}
