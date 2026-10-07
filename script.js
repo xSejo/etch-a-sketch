@@ -1,6 +1,6 @@
-function createDivs() {
+function drawGrid(number) {
   const fragment = document.createDocumentFragment();
-  for (let i = 0; i < 256; i++) {
+  for (let i = 0; i < number * number; i++) {
     const div = document.createElement("div");
     div.classList.add("grid-cell");
     fragment.append(div);
@@ -8,9 +8,14 @@ function createDivs() {
   container.append(fragment);
 }
 
+function deleteGrid() {
+  container.replaceChildren();
+}
+
 const container = document.getElementById("container");
 const btn = document.getElementById("edit-button");
-createDivs();
+let initial = 16;
+drawGrid(initial);
 
 container.addEventListener("mouseover", (e) => {
   const div = e.target;
@@ -29,9 +34,8 @@ btn.addEventListener("click", () => {
     input = Number(response);
   } while (isNaN(input) || input > 100);
   {
-    alert("Passed! Grid has been changed");
+    alert("Passed! Grid size has been changed");
+    deleteGrid();
+    drawGrid(input);
   }
-
-  // TODO - reset canvas
-  // TODO - redraw grid
 });
