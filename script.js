@@ -18,12 +18,6 @@ container.addEventListener("mouseover", (e) => {
   div.style.backgroundColor = "blue";
 });
 
-container.addEventListener("mouseout", (e) => {
-  const div = e.target;
-  if (!div.classList.contains("grid-cell")) return;
-  div.style.backgroundColor = "white";
-});
-
 btn.addEventListener("click", () => {
   const LIMIT = 100;
   let input;
