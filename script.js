@@ -30,6 +30,8 @@ btn.addEventListener("click", () => {
 
   do {
     let response = prompt("Enter number of squares (MAXIMUM 100)");
+    if (response === null) return;
+
     input = Number(response);
   } while (isNaN(input) || input > 100);
   {
@@ -39,5 +41,3 @@ btn.addEventListener("click", () => {
   // TODO - reset canvas
   // TODO - redraw grid
 });
-
-function getPrompt() {}
