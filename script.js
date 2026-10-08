@@ -16,6 +16,14 @@ function deleteGrid() {
   container.replaceChildren();
 }
 
+function randomizeRGB() {
+  return [
+    Math.floor(Math.random() * 255) + 1,
+    Math.floor(Math.random() * 255) + 1,
+    Math.floor(Math.random() * 255) + 1,
+  ];
+}
+
 const container = document.getElementById("container");
 const btn = document.getElementById("edit-button");
 let initial = 16;
@@ -24,7 +32,11 @@ drawGrid(initial);
 container.addEventListener("mouseover", (e) => {
   const div = e.target;
   if (!div.classList.contains("grid-cell")) return;
-  div.style.backgroundColor = "blue";
+
+  let [r, g, b] = randomizeRGB();
+
+  console.log(`{${r}, ${g}, ${b}, ${opacity}`);
+  div.style.backgroundColor = `rgb(${r}, ${g}, ${b}, ${opacity})`;
 });
 
 btn.addEventListener("click", () => {
