@@ -1,7 +1,11 @@
 function drawGrid(number) {
   const fragment = document.createDocumentFragment();
+  let flexBasis = 100 / number;
+
   for (let i = 0; i < number * number; i++) {
     const div = document.createElement("div");
+    div.style.flex = `0 0 ${flexBasis}%`;
+    div.style.height = `${flexBasis}%`;
     div.classList.add("grid-cell");
     fragment.append(div);
   }
