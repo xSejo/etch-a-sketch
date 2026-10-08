@@ -18,9 +18,9 @@ function deleteGrid() {
 
 function randomizeRGB() {
   return [
-    Math.floor(Math.random() * 255) + 1,
-    Math.floor(Math.random() * 255) + 1,
-    Math.floor(Math.random() * 255) + 1,
+    Math.floor(Math.random() * 256),
+    Math.floor(Math.random() * 256),
+    Math.floor(Math.random() * 256),
   ];
 }
 
@@ -34,9 +34,14 @@ container.addEventListener("mouseover", (e) => {
   if (!div.classList.contains("grid-cell")) return;
 
   let [r, g, b] = randomizeRGB();
+  let opacity = Number(div.dataset.opacity || 0);
 
-  console.log(`{${r}, ${g}, ${b}, ${opacity}`);
-  div.style.backgroundColor = `rgb(${r}, ${g}, ${b}, ${opacity})`;
+  if (opacity < 1) {
+    opacity += 0.1;
+    div.dataset.opacity = opacity;
+  }
+
+  div.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${opacity})`;
 });
 
 btn.addEventListener("click", () => {
@@ -48,7 +53,7 @@ btn.addEventListener("click", () => {
     if (response === null) return;
 
     input = Number(response);
-  } while (isNaN(input) || input > 100);
+  } while (isNaN(input) || input > 100 || input < 1);
   {
     alert("Passed! Grid size has been changed");
     deleteGrid();
